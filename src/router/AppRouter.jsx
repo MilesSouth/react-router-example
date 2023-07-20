@@ -11,7 +11,8 @@ import Fullstack from "../pages/Fullstack"
 import Aws from "../pages/Aws"
 import React from "../pages/React"
 import Next from "../pages/Next"
-
+import PrivateRouter from "./PrivateRouter"
+import Login from "../pages/Login"
 const AppRouter = () => {
   return (
     <div>
@@ -26,9 +27,14 @@ const AppRouter = () => {
           </Route>
           <Route path="aws" element={<Aws />} />
         </Route>
-        <Route path="/people" element={<People />}></Route>
-        <Route path="/people/:id" element={<PersonDetail />}></Route>
+        <Route element={<PrivateRouter />}>
+          <Route path="/people" element={<People />}></Route>
+          <Route path="/people/:id" element={<PersonDetail />}></Route>
+        </Route>
+
         <Route path="/contact" element={<Contact />}></Route>
+
+        <Route path="/login" element={<Login />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
